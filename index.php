@@ -1,2 +1,2 @@
 <?php
-include_once 'MobileRestHandler.php';
+include_once 'RestController.php';
