@@ -1,0 +1,28 @@
+CREATE TABLE `tbl_type` (
+  `t_id` int NOT NULL,
+  `t_desc` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`t_id`)
+)
+
+CREATE TABLE `tbl_mobile` (
+  `m_id` int(11) NOT NULL AUTO_INCREMENT,
+  `m_desc` varchar(100) DEFAULT 'mobile',
+  `path` varchar(100) NOT NULL,
+  `m_type` int(11) NOT NULL,
+  PRIMARY KEY (`m_id`),
+  KEY `m_type` (`m_type`),
+  CONSTRAINT `tbl_mobile_ibfk_1` FOREIGN KEY (`m_type`) REFERENCES `tbl_type` (`t_id`)
+)
+
+
+
+INSERT INTO `tbl_type` (`t_id`, `t_desc`) VALUES
+(1, 'smart'),
+(2, 'simple');
+
+
+INSERT INTO `tbl_mobile` (`m_desc`, `path`, `m_type`) VALUES
+( 'Iphone X', 'pic/ipx.jpg', 1),
+( 'Samsung', 'pic/s.jpg', 1),
+( 'Oppo', 'pic/o.jpg', 1),
+( 'Panasonic KX', 'pic/pkx.jpg', 2);
