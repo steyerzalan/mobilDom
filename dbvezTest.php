@@ -17,6 +17,15 @@ class DBcontr_test
             echo "SikereTELEN csati \n";
         }
 
+        if($this->SelectQueryteszt($db))
+        {
+            echo "SIKERES Szedlák lekérdezés \n";
+        }
+        else
+        {
+            echo "sikerTELEN Szdelák lekérdezés \n";
+        }
+
         $db->closeDB();
     }
     private function csatlakozasteszt($db)
@@ -25,6 +34,18 @@ class DBcontr_test
         $tulajdonsag=$informacio->getProperty('conn');
         $tulajdonsag->setAccessible(true);
         return !is_null($tulajdonsag->getValue($db));
+    }
+
+    private function SelectQueryteszt($db)
+    {
+        //célzott lekérdezés
+        $eredmeny=$db->executeSelectQuery("Select m_type from tbl_mobile
+         where m_id=1");
+        print_r($eredmeny);
+        echo "<br>";
+        return is_array($eredmeny) && !empty($eredmeny) && 
+        isset($eredmeny[0]['m_type']) 
+        && $eredmeny[0]['m_type']==1;
     }
 }
 
