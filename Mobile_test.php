@@ -13,12 +13,14 @@ function testGetAllMobile()
     }
     else
     {
-        echo "Mobilok felsorolása: \n";
+        print("Mobilok felsorolása: \n");
+        echo "<br>";
         //print_r($mobiles);
         foreach($mobiles as $mobile)
         {
             echo "id: " . $mobile['m_id']. " | Leírás: " 
             . $mobile['m_desc'] . "\n";
+            echo "<br>";
         }
 
     }
